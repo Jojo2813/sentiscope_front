@@ -50,9 +50,9 @@ if response:
     if response.status_code == 200:
         data = response.json()
         prediction = data.get("prediction", "No prediction returned.")
-        #contrib_dict = data.get("contributions", {})
-        #top_positive = data.get("top_positive", [])
-        #top_negative = data.get("top_negative", [])
+        contrib_dict = data.get("contributions", {})
+        top_positive = data.get("top_positive", [])
+        top_negative = data.get("top_negative", [])
     else:
         st.error(f"API request failed with status code {response.status_code}.")
 
@@ -62,12 +62,12 @@ if st.button("Analyze sentiment"):
         st.warning("Please enter a review before clicking the button.")
     elif prediction:
         st.success(f"**Predicted sentiment:** `{prediction}`")
-        #if contrib_dict:
-            #st.markdown("#### 🔍 Word Importance Visualization")
-            #html_vis = visualize_input_importance(user_input, contrib_dict, top_positive, top_negative)
-            #st.markdown(html_vis, unsafe_allow_html=True)
-        #else:
-            #st.info("No word-level contribution data available for this input.")
+        if contrib_dict:
+            st.markdown("#### 🔍 Word Importance Visualization")
+            html_vis = visualize_input_importance(user_input, contrib_dict, top_positive, top_negative)
+            st.markdown(html_vis, unsafe_allow_html=True)
+        else:
+            st.info("No word-level contribution data available for this input.")
 
 # TODO: [OPTIONAL] maybe you can add some other pages?
 #   - some statistical data you collected in graphs
