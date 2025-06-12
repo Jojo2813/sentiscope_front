@@ -1,8 +1,4 @@
-def visualize_input_importance(text, vectorizer, model, clean_text, base_size=16, scale=40, top_n=2):
-    """
-    Creates a string to highlight the most important words in the user input based on model contribution.
-    """
-    def build_html_from_contributions(text, contrib_dict, top_positive, top_negative, base_size=16, scale=40):
+def visualize_input_importance(text, contrib_dict, top_positive, top_negative, base_size=16, scale=40):
     words = text.split()
     highlighted_text = ""
     for word in words:
