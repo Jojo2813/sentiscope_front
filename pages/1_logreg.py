@@ -14,7 +14,7 @@ else:
 BASE_URI = BASE_URI if BASE_URI.endswith("/") else BASE_URI + "/"
 
 # Adjust endpoint to logistic route
-url = BASE_URI + "text"
+url = BASE_URI + "text_ml"
 
 # Create user input box
 user_input = st.text_input("Enter a review:")
