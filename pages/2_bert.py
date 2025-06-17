@@ -14,11 +14,11 @@ else:
 BASE_URI = BASE_URI if BASE_URI.endswith("/") else BASE_URI + "/"
 
 # Adjust endpoint to logistic route
-url = BASE_URI + "bert"
+url = BASE_URI + "text_dl"
 
 # Create user input box
 user_input = st.text_input("Enter a review:")
-params = {"review": user_input}
+params = {"text": user_input}
 
 # Display result
 if st.button("Analyze sentiment"):
@@ -26,7 +26,7 @@ if st.button("Analyze sentiment"):
         st.warning("Please enter a review.")
     else:
         try:
-            response = requests.get(url, params=params)
+            response = requests.post(url, json=params)
             if response.status_code == 200:
                 data = response.json()
                 prediction = data["sentiment"]
