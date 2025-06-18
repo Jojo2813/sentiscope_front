@@ -8,7 +8,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 st.subheader("The logistic regression model")
 
 st.markdown("""The first **Gridsearch** was done on 1% of the training data,
-            so 36000 observations:""")
+            so 36.000 observations:""")
 
 df = pd.read_csv("./assets/grid_search_ml.csv", index_col=0)
 small_df = df[['params','mean_test_score',\
@@ -100,4 +100,3 @@ st.markdown("""The amount of data used for this project was great to train
             difficulties when training complex models. With more computational
             power, time and memory space, especially the BERT model could have
             been optimized more.""")
-
