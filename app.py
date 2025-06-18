@@ -16,7 +16,7 @@ st.markdown("<br>", unsafe_allow_html=True)
 
 #Create Greeting and navigation
 st.subheader("Welcome to the Sentiment Analysis App")
-st.markdown("""Use the [prediction page](https://sentiscope.streamlit.app/about)
+st.markdown("""Use the [prediction page](https://sentiscope.streamlit.app/prediction)
             to choose between **Logistic Regression** and **BERT** sentiment
             classifiers.""")
 st.markdown("""You can **input a review** and view **prediction explanations**
