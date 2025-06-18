@@ -100,3 +100,4 @@ st.markdown("""The amount of data used for this project was great to train
             difficulties when training complex models. With more computational
             power, time and memory space, especially the BERT model could have
             been optimized more.""")
+
