@@ -11,8 +11,8 @@ st.title("Sentiment Analysis")
 # Create user input box
 user_input = st.text_area(
     "Enter your review:",
-    height=200,  # passt die Höhe an
-    placeholder="Paste or type a long review here..."
+    height=150,
+    placeholder="Type a review here..."
 )
 
 #ML part
