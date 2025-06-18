@@ -25,11 +25,11 @@ st.markdown("""You can **input a review** and view **prediction explanations**
 st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("""Use the [batch page](https://sentiscope.streamlit.app/batch)
-            to upload  csv file containing multiple reviews and get a sentiment
-            prediction on all of them at once.""")
+            to **upload  a csv file** containing multiple reviews and get a
+            sentiment prediction on **all of them** at once.""")
 
 st.markdown("<br>", unsafe_allow_html=True)
 
 st.markdown("""Use the [about page](https://sentiscope.streamlit.app/about)
             to learn about the
-         models and learning""")
+         **models and learning process**.""")
