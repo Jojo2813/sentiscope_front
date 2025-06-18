@@ -63,3 +63,40 @@ st.markdown("<br>", unsafe_allow_html=True)
 st.markdown("<br>", unsafe_allow_html=True)
 
 st.subheader("The BERT model")
+
+st.markdown("""For the Deep Learning approach, we used a pre-trained Transformer
+            model called [tiny BERT](https://huggingface.co/prajjwal1/bert-tiny)
+            from HuggingFace. This model is a smaller version of the BERT model,
+            which is known for it's ability to work with natural language.
+            For training, we used the pre-trained tiny bert Tokenizer, to get
+            the data ready for the model. As the tiny model already comes with
+            over 4.000.000 parameters to train, we started with a small portion
+            of our data:""")
+
+st.image("./assets/bert_train_1.png", width = 1500)
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.image("./assets/bert_train_2.png", width = 1500)
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.markdown("""These graphs were created when training the model on 15.000 rows.
+            After a couple more iterations with increasing the training data
+            little by little, the model we use in the backend was trained on
+            200.000 observations using 10 epochs, a batch size of 32, the adam
+            optimizer and binary crossentropy as a loss function. The model got
+            an accuracy of around 90,1206% on the test set.
+            The training was done in google colab and was already bringing us to
+            the edge of open source ressources for efficient model training.""")
+
+st.markdown("<br>", unsafe_allow_html=True)
+st.markdown("<br>", unsafe_allow_html=True)
+
+st.markdown("""The amount of data used for this project was great to train
+            models with good accuracy and generalisation, but also striked some
+            difficulties when training complex models. With more computational
+            power, time and memory space, especially the BERT model could have
+            been optimized more.""")
