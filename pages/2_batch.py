@@ -6,6 +6,9 @@ import time
 
 
 def highlight_sentiment(val):
+    """Function to highlight the sentiment column of our resulting dataframe
+    in green (Positive) or red (Negative)"""
+
     if val == "Positive":
         color = '#d4edda'  # hellgrün
         text_color = '#155724'
@@ -27,34 +30,36 @@ else:
     BASE_URI = st.secrets["cloud_api_uri"]
 BASE_URI = BASE_URI if BASE_URI.endswith("/") else BASE_URI + "/"
 
-# Adjust endpoint to logistic route
-url = BASE_URI + "text_ml"
+# Adjust endpoint to batch route
+url = BASE_URI + "predict_csv"
 
+#Let the user upload a file
 uploaded_file = st.file_uploader("Upload a CSV file with reviews", type="csv")
 
 if uploaded_file:
-    df = pd.read_csv(uploaded_file, index_col=0)
 
+    #Turn file to dataframe and display the head
+    df = pd.read_csv(uploaded_file, index_col=0)
     st.write("Preview of uploaded data:")
     st.dataframe(df.head())
 
+    #Once button is clicked, make API call to the batch endpoint
     if st.button("Predict Sentiments"):
-        results = []
+        files = {"file": (uploaded_file.name, uploaded_file.getvalue(), "text/csv")}
         with st.spinner("Sending review to API..."):
-            for review in df["text"]:
-                response = requests.post(url, json={"text": review})
-                data = response.json()
-                sentiment = data['Sentiment']
-                results.append(sentiment)
+            response = requests.post(url, files=files)
+            data = response.json()
 
-        df["predicted_sentiment"] = results
+        #Turn response to dataframe
+        df= pd.DataFrame(data)
 
-        # Farbliche Hervorhebung der Spalte
+        #Highlight sentiment with colors
         styled_df = df.style.applymap(highlight_sentiment, subset=["predicted_sentiment"])
 
+        #Display dataset with new sentiment column
         st.write("Sentiment Predictions:")
         st.dataframe(styled_df)
 
-        # Optional: Download link
+        #Download link
         csv = df.to_csv(index=False).encode("utf-8")
         st.download_button("Download Results as CSV", csv, "predictions.csv", "text/csv")
