@@ -51,7 +51,7 @@ if uploaded_file:
             data = response.json()
 
         #Turn response to dataframe
-        df= pd.DataFrame(data)
+        df= pd.DataFrame(data).set_index('id')
 
         #Highlight sentiment with colors
         styled_df = df.style.applymap(highlight_sentiment, subset=["predicted_sentiment"])
